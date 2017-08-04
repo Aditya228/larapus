@@ -14,6 +14,8 @@
     <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/app.css">
+    <link rel="stylesheet" type="text/css" href="/css/dataTables.bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/jquery.dataTables.css">
 </head>
 <body>
     <div id="app">
@@ -41,6 +43,9 @@
                         @if(Auth::check())
                         <li><a href="{{url('/home')}}">Dashboard</a></li>
                         @endif
+                        @role('admin')
+                        <li><a href="{{route('authors.index')}}">Penulis</a></li>
+                        @endrole
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -61,7 +66,7 @@
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
-                                        </a>
+                                     </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
@@ -79,8 +84,10 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script type="/js/bootstrap.min.jd"></script>
-    @yield('script')
+    <script src="/js/app.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/js/dataTables.bootstrap.min.js"></script>
+    @yield('scripts')
 </body>
 </html>
